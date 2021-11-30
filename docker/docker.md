@@ -1,20 +1,22 @@
 # Docker
 
-## Docker Useful Commands
+## Docker Images Useful Commands
 
 | command                                                                   | description                              |
 |---------------------------------------------------------------------------|------------------------------------------|
+| `docker image ls $PATTERN`                                                | Show all images matching $PATTERN        |
+
+## Docker Containers Useful Commands
+
+| command                                                                   | description                              |
+|---------------------------------------------------------------------------|------------------------------------------|
+| `docker container ls --all -f name=$PATTERN`                              | Show all containers matching $PATTERN    |
 | `docker container ls --all -f ancestor=$IMAGE`                            | Show all containers built from '$IMAGE'  |
 | `du -h $(docker inspect --format='{{.LogPath}}' $(docker ps -qa))`        | Show docker logs size for all containers |
 | `cat /dev/null > $(docker inspect --format='{{.LogPath}}' $CONTAINER_ID)` | Clear log content for $CONTAINER_ID      |
 | `docker cp [OPTIONS] $CONTAINER_NAME:$SRC_PATH $DEST_PATH`                | Copy files from container to localsystem |
 | `docker cp [OPTIONS] $SRC_PATH $CONTAINER_NAME:$DEST_PATH`                | Copy files from localsystem to container |
-
-References:
-
-- [https://stackoverflow.com/questions/59765204/how-to-list-docker-logs-size-for-all-containers]
-- [https://access.redhat.com/solutions/2334181]
-- [https://docs.docker.com/engine/reference/commandline/cp/]
+| `docker exec -u 0 -it $CONTAINER_NAME bash`                               | Login into a container as root (bash)    |
 
 ## Appendix
 
@@ -41,3 +43,9 @@ Filter output based on these conditions:
           - status=(created|restarting|removing|running|paused|exited)
           - volume=(<volume name>|<mount point destination>)
 ```
+
+## References:
+
+- [https://stackoverflow.com/questions/59765204/how-to-list-docker-logs-size-for-all-containers]
+- [https://access.redhat.com/solutions/2334181]
+- [https://docs.docker.com/engine/reference/commandline/cp/]
