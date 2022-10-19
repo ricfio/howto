@@ -20,7 +20,17 @@
 
 ## Appendix
 
-## Container filters
+### Docker Desktop on Windows (WSL2)
+
+Setting boundaries for WSL2 (%USERPROFILE%/.wslconfig):
+
+```ps
+[wsl2]
+memory=4GB # Limits VM memory in WSL 2 to 4 GB
+processors=4 # Makes the WSL 2 VM use four virtual processors
+```
+
+### Container filters
 
 `docker container ls --all --filter=...`
 
@@ -44,8 +54,9 @@ Filter output based on these conditions:
           - volume=(<volume name>|<mount point destination>)
 ```
 
-## References:
+## References
 
-- [https://stackoverflow.com/questions/59765204/how-to-list-docker-logs-size-for-all-containers]
-- [https://access.redhat.com/solutions/2334181]
-- [https://docs.docker.com/engine/reference/commandline/cp/]
+- [Change Docker root directory /var/lib/docker to another location](https://linuxconfig.org/how-to-move-docker-s-default-var-lib-docker-to-another-directory-on-ubuntu-debian-linux)
+- [List docker logs size for all containers](https://stackoverflow.com/questions/59765204/how-to-list-docker-logs-size-for-all-containers)
+- [Set container log limits](https://access.redhat.com/solutions/2334181)
+- [Copy files/folders between a container and the local filesystem](https://docs.docker.com/engine/reference/commandline/cp/)
