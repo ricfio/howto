@@ -1,23 +1,63 @@
 # GIT
 
+## Clone a GIT Repository
+
+```bash
+git clone git@github.com:ricfio/howto.git
+```
+
+## Init a GIT Repository
+
+```bash
+echo "# README" >> README.md
+git init
+git add --all
+git commit -m "Initial commit"
+git branch -m main
+```
+
+## Add remote origin on GitHub
+
+Choose between ssh or http autentication:
+
+```bash
+# Add remote origin on GitHub (use ssh autentication)
+git remote add origin git@github.com:ricfio/howto.git
+```
+
+```bash
+# Add remote origin on GitHub (use https autentication)
+git remote add origin https://github.com/ricfio/howto.git
+```
+
+## Push main branch on GitHub Repository
+
+```bash
+git push -u origin main
+```
+
 ## GIT Useful commands
 
 ### Common commands
 
 | command                                       | description                                                         |
 |-----------------------------------------------|---------------------------------------------------------------------|
-| `git init`                                    | Initialize repository                                               |
-| `git add --all`                               | Add all new files                                                   |
 | `git clone {REPO} {FOLDER} -b {BRANCH}`       | Clone repository {REPO} into {FOLDER} with checkout on {BRANCH}     |
-| `git checkout {BRANCH}`                       | Checkout {BRANCH}                                                   |
 | `git fetch`                                   | Fetch from remote                                                   |
+| `git branch --list`                           | List local branches                                                 |
+| `git branch --list --remote`                  | List remote branches                                                |
+| `git checkout {BRANCH}`                       | Checkout {BRANCH}                                                   |
 | `git pull`                                    | Pull from remote                                                    |
+| `git log --pretty=oneline -n 3`               | Show the last 3 commits (one row for each one)                      |
 | `git push [-f] origin main`                   | Push from local to remote origin main branch (-f option to force)   |
 | `git push origin --all`                       | Push from local to remote origin all branchs                        |
 | `git push origin --tags`                      | Push from local to remote origin all tags                           |
-| `git log --pretty=oneline -n 3`               | Show the last 3 commits (one row for each one)                      |
 
-### GIT-Flow, Clean, Reset and Delete commands
+### GIT-Flow commands
+
+```bash
+git flow init -d
+```
 
 | command                                       | description                                                         |
 |-----------------------------------------------|---------------------------------------------------------------------|
@@ -25,10 +65,14 @@
 | `git flow feature start {FEATURE} [{BRANCH}]` | Start new feature {FEATURE} from {BRANCH}                           |
 | `git flow feature finish {FEATURE}`           | Finish feature {FEATURE}                                            |
 | `git flow hotfix start {HOTFIX} [{BRANCH}]`   | Start new hotfix {HOTFIX} from {BRANCH}                             |
+
+### Clean, Reset and Delete commands
+
+| command                                       | description                                                         |
+|-----------------------------------------------|---------------------------------------------------------------------|
 | `git clean -nd`                               | Show local untracked files                                          |
 | `git clean -fd`                               | Remove local untracked files and directories                        |
 | `git reset --hard [<origin/{BRANCH}>]`        | Hard reset local {BRANCH} to remote origin/{BRANCH}                 |
-| `git branch --list`                           | List local branches                                                 |
 | `git branch -d <local-branch>`                | Delete local branch with limitations                                |
 | `git branch -D <local-branch>`                | Delete local branch with force                                      |
 
@@ -59,7 +103,7 @@ git config --global user.name "Riccardo Fiorenza"
 git config --global user.email "ricfio.professional@gmail.com"
 ```
 
-If you’re on a Microsoft Windows:
+If you’re on a Microsoft Windows, you would like:
 
 - set core.autocrlf to true (converts LF endings into CRLF when you check out code)
 - set core.filemode to false (ignores file permissions changing)
@@ -67,41 +111,4 @@ If you’re on a Microsoft Windows:
 ```bash
 git config --global core.autocrlf true
 git config --global core.filemode false
-```
-
-## Create a new GIT Repository
-
-```bash
-echo "# example" >> README.md
-git init
-git config core.autocrlf false
-git add --all
-git commit -m "Initial commit"
-git branch -m main
-```
-
-## Initialize repository for GIT Flow
-
-```bash
-git flow init -d
-```
-
-## Add remote origin on GitHub
-
-Choose between ssh or http autentication:
-
-```bash
-# Add remote origin on GitHub (use ssh autentication)
-git remote add origin git@github.com:ricfio/howto.git
-```
-
-```bash
-# Add remote origin on GitHub (use https autentication)
-git remote add origin https://github.com/ricfio/howto.git
-```
-
-## Push main branch on GitHub Repository
-
-```bash
-git push -u origin main
 ```
