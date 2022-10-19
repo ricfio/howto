@@ -12,7 +12,9 @@
 | `git checkout {BRANCH}`                       | Checkout {BRANCH}                                                   |
 | `git fetch`                                   | Fetch from remote                                                   |
 | `git pull`                                    | Pull from remote                                                    |
-| `git push [-f] origin main`                   | Push from local to remote main branch (-f option to force)          |
+| `git push [-f] origin main`                   | Push from local to remote origin main branch (-f option to force)   |
+| `git push origin --all`                       | Push from local to remote origin all branchs                        |
+| `git push origin --tags`                      | Push from local to remote origin all tags                           |
 | `git log --pretty=oneline -n 3`               | Show the last 3 commits (one row for each one)                      |
 
 ### GIT-Flow, Clean, Reset and Delete commands
@@ -26,6 +28,7 @@
 | `git clean -nd`                               | Show local untracked files                                          |
 | `git clean -fd`                               | Remove local untracked files and directories                        |
 | `git reset --hard [<origin/{BRANCH}>]`        | Hard reset local {BRANCH} to remote origin/{BRANCH}                 |
+| `git branch --list`                           | List local branches                                                 |
 | `git branch -d <local-branch>`                | Delete local branch with limitations                                |
 | `git branch -D <local-branch>`                | Delete local branch with force                                      |
 
@@ -83,9 +86,22 @@ git branch -m main
 git flow init -d
 ```
 
+## Add remote origin on GitHub
+
+Choose between ssh or http autentication:
+
+```bash
+# Add remote origin on GitHub (use ssh autentication)
+git remote add origin git@github.com:ricfio/howto.git
+```
+
+```bash
+# Add remote origin on GitHub (use https autentication)
+git remote add origin https://github.com/ricfio/howto.git
+```
+
 ## Push main branch on GitHub Repository
 
 ```bash
-git remote add origin https://github.com/ricfio/howto.git
 git push -u origin main
 ```
