@@ -1,0 +1,37 @@
+/**
+ * SourceTree for Windows with SSH key files (using Pageant: PuTTY authentication agent)
+ * https://benjaminhorn.io/code/sourcetree-for-windows-ssh-keys/
+ */
+
+Linux Shell or Windows Prompt:
+	ssh-keygen
+		...
+		Your identification has been saved in /home/user/.ssh/id_rsa.
+		Your public key has been saved in /home/user/.ssh/id_rsa.pub.
+		...
+
+SourceTree:
+	Tools > Options: SSH Client Configuration
+		SSH Key: 
+		SSH Client: PuTTY/Plink
+		Automatically start SSH agent when Sourcetree opens: TRUE
+
+PuTTYgen (putty-gen.exe)
+	Load: /home/user/.ssh/id_rsa
+	Save private key: /home/user/.ssh/id_rsa_win.ppk
+
+Pageant
+	View Keys > Add key: /home/user/.ssh/id_rsa_win.ppk
+
+GIT Linux Server:
+	cat /home/user/.ssh/id_rsa_win.ppk >> ~/.ssh/authorized_keys
+
+/**
+ * Add Pageant (PuTTY authentication agent) to Windows Starup Apps (Windows 10)
+ * https://support.microsoft.com/it-it/help/4026268/windows-10-change-startup-apps
+ * https://blog.shvetsov.com/2010/03/making-pageant-automatically-load-keys.html
+ */
+
+Windows Prompt:
+	shell:startup
+		Mouse Right Click > Nuovo collegamento: "C:\Users\{user}\AppData\Local\SourceTree\app-3.2.6\tools\putty\pageant.exe" "C:\Users\{user}\.ssh\id_rsa_win.ppk"
