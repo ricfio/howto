@@ -40,18 +40,20 @@ git push -u origin main
 
 ### Common commands
 
-| command                                       | description                                                         |
-|-----------------------------------------------|---------------------------------------------------------------------|
-| `git clone {REPO} {FOLDER} -b {BRANCH}`       | Clone repository {REPO} into {FOLDER} with checkout on {BRANCH}     |
-| `git fetch`                                   | Fetch from remote                                                   |
-| `git branch --list`                           | List local branches                                                 |
-| `git branch --list --remote`                  | List remote branches                                                |
-| `git checkout {BRANCH}`                       | Checkout {BRANCH}                                                   |
-| `git pull`                                    | Pull from remote                                                    |
-| `git log --pretty=oneline -n 3`               | Show the last 3 commits (one row for each one)                      |
-| `git push [-f] origin main`                   | Push from local to remote origin main branch (-f option to force)   |
-| `git push origin --all`                       | Push from local to remote origin all branchs                        |
-| `git push origin --tags`                      | Push from local to remote origin all tags                           |
+| command                                            | description                                                    |
+|----------------------------------------------------|----------------------------------------------------------------|
+| `git clone <repo> <folder> -b <branch>`            | Clone `<repo>` into `<folder>` with checkout on `<branch>`     |
+| `git fetch`                                        | Fetch from remote                                              |
+| `git branch --list`                                | List local branches                                            |
+| `git branch --list --remote`                       | List remote branches                                           |
+| `git switch -c <branch> --track <remote>/<branch>` | Create and Switch to a new `<branch>` from `<remote>/<branch>` |
+| `git checkout <branch>`                            | Checkout `<branch>`                                            |
+| `git pull`                                         | Pull from remote                                               |
+| `git log --pretty=oneline -n 5 [<from>..<to>]`     | Show the last 5 commits (one row for each one)                 |
+| `git restore <files>`                              | Restore `<file>` or `<files>` (file1 .. fileN) from repository |
+| `git push [-f] origin main`                        | Push from local to remote origin main branch (-f force)        |
+| `git push origin --all`                            | Push from local to remote origin all branchs                   |
+| `git push origin --tags`                           | Push from local to remote origin all tags                      |
 
 ### GIT-Flow commands
 
@@ -62,9 +64,9 @@ git flow init -d
 | command                                       | description                                                         |
 |-----------------------------------------------|---------------------------------------------------------------------|
 | `git flow init -d`                            | Initialize repository for GIT Flow (`apt-get install git-flow`)     |
-| `git flow feature start {FEATURE} [{BRANCH}]` | Start new feature {FEATURE} from {BRANCH}                           |
-| `git flow feature finish {FEATURE}`           | Finish feature {FEATURE}                                            |
-| `git flow hotfix start {HOTFIX} [{BRANCH}]`   | Start new hotfix {HOTFIX} from {BRANCH}                             |
+| `git flow feature start <feature> [<branch>]` | Start new `<feature>` from `<branch>`                               |
+| `git flow feature finish <feature>`           | Finish `<feature>`                                                  |
+| `git flow hotfix start <hotfix> [<branch>]`   | Start new hotfix `<hotfix>` from `<branch>`                         |
 
 ### Clean, Reset and Delete commands
 
@@ -72,7 +74,7 @@ git flow init -d
 |-----------------------------------------------|---------------------------------------------------------------------|
 | `git clean -nd`                               | Show local untracked files                                          |
 | `git clean -fd`                               | Remove local untracked files and directories                        |
-| `git reset --hard [<origin/{BRANCH}>]`        | Hard reset local {BRANCH} to remote origin/{BRANCH}                 |
+| `git reset --hard [<remote>/<branch>]`        | Hard reset local `<branch>` to `<remote>/<branch>`                  |
 | `git branch -d <local-branch>`                | Delete local branch with limitations                                |
 | `git branch -D <local-branch>`                | Delete local branch with force                                      |
 
@@ -80,8 +82,8 @@ git flow init -d
 
 | command                                       | description                                                         |
 |-----------------------------------------------|---------------------------------------------------------------------|
-| `git clone --recursive {REPO} {FOLDER}`       | Clone repository {REPO} into {FOLDER} with submodules cloning also  |
-| `git submodule update --init --recursive`     | Initialize submodules into {REPO} cloned without --recursive option |
+| `git clone --recursive <repo> <folder>`       | Clone repository `<repo>` and its submodules into `<folder>`        |
+| `git submodule update --init --recursive`     | Init submodules into `<repo>` cloned without `--recursive option`   |
 
 ### Minor commands
 
