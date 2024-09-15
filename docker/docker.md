@@ -1,34 +1,36 @@
 # Docker
 
-## Docker Images Useful Commands
+- [Docker CLI Cheat Sheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
 
-| command                                                                   | description                              |
-|---------------------------------------------------------------------------|------------------------------------------|
-| `docker image ls $PATTERN`                                                | Show all images matching $PATTERN        |
+## Docker Image
 
-## Docker Containers Useful Commands
+| command                                  | description                              |
+|------------------------------------------|------------------------------------------|
+| `docker image ls --all`                  | Show all images (includes intermediates) |
+| `docker image ls --all $PATTERN`         | Show images matching $PATTERN            |
+| `docker image ls --all -f dangling=true` | Show dangling images                     |
+| `docker image prune -f`                  | Prune dangling images                    |
 
-| command                                                                   | description                              |
-|---------------------------------------------------------------------------|------------------------------------------|
-| `docker container ls --all -f name=$PATTERN`                              | Show all containers matching $PATTERN    |
-| `docker container ls --all -f ancestor=$IMAGE`                            | Show all containers built from '$IMAGE'  |
-| `du -h $(docker inspect --format='{{.LogPath}}' $(docker ps -qa))`        | Show docker logs size for all containers |
-| `cat /dev/null > $(docker inspect --format='{{.LogPath}}' $CONTAINER_ID)` | Clear log content for $CONTAINER_ID      |
-| `docker cp [OPTIONS] $CONTAINER_NAME:$SRC_PATH $DEST_PATH`                | Copy files from container to localsystem |
-| `docker cp [OPTIONS] $SRC_PATH $CONTAINER_NAME:$DEST_PATH`                | Copy files from localsystem to container |
-| `docker exec -u 0 -it $CONTAINER_NAME bash`                               | Login into a container as root (bash)    |
+## Docker Container
+
+| command                                                    | description                              |
+|------------------------------------------------------------|------------------------------------------|
+| `docker container ls --all`                                | Show all containers matching $PATTERN    |
+| `docker container ls --all -f name=$PATTERN`               | Show all containers matching $PATTERN    |
+| `docker container ls --all -f ancestor=$IMAGE`             | Show all containers built from '$IMAGE'  |
+| `docker cp [OPTIONS] $CONTAINER_NAME:$SRC_PATH $DEST_PATH` | Copy files from container to localsystem |
+| `docker cp [OPTIONS] $SRC_PATH $CONTAINER_NAME:$DEST_PATH` | Copy files from localsystem to container |
+| `docker exec -u 0 -it $CONTAINER_NAME bash`                | Login into a container as root (bash)    |
+
+### Docker Container Log
+
+| command                                                                 | description                              |
+|-------------------------------------------------------------------------|------------------------------------------|
+| `docker logs -f <container>`                                            | Show logs of container                   |
+| `sudo du -h $(docker inspect --format='{{.LogPath}}' $(docker ps -qa))` | Show docker logs size for all containers |
+| `cat /dev/null > $(docker inspect --format='{{.LogPath}}' <container>)` | Clear log content for container          |
 
 ## Appendix
-
-### Docker Desktop on Windows (WSL2)
-
-Setting boundaries for WSL2 (%USERPROFILE%/.wslconfig):
-
-```ps
-[wsl2]
-memory=4GB # Limits VM memory in WSL 2 to 4 GB
-processors=4 # Makes the WSL 2 VM use four virtual processors
-```
 
 ### Container filters
 
@@ -36,22 +38,22 @@ processors=4 # Makes the WSL 2 VM use four virtual processors
 
 ```console
 Filter output based on these conditions:
-          - ancestor=(<image-name>[:tag]|<image-id>| ⟨image@digest⟩)
-            containers created from an image or a descendant.
-          - before=(<container-name>|<container-id>)
-          - expose=(<port>[/<proto>]|<startport-endport>/[<proto>])
-          - exited=<int> an exit code of <int>
-          - health=(starting|healthy|unhealthy|none)
-          - id=<ID> a container's ID
-          - isolation=(default|process|hyperv) (Windows daemon only)
-          - is-task=(true|false)
-          - label=<key> or label=<key>=<value>
-          - name=<string> a container's name
-          - network=(<network-id>|<network-name>)
-          - publish=(<port>[/<proto>]|<startport-endport>/[<proto>])
-          - since=(<container-name>|<container-id>)
-          - status=(created|restarting|removing|running|paused|exited)
-          - volume=(<volume name>|<mount point destination>)
+- ancestor=(<image-name>[:tag]|<image-id>| ⟨image@digest⟩)
+  containers created from an image or a descendant.
+- before=(<container-name>|<container-id>)
+- expose=(<port>[/<proto>]|<startport-endport>/[<proto>])
+- exited=<int> an exit code of <int>
+- health=(starting|healthy|unhealthy|none)
+- id=<ID> a container's ID
+- isolation=(default|process|hyperv) (Windows daemon only)
+- is-task=(true|false)
+- label=<key> or label=<key>=<value>
+- name=<string> a container's name
+- network=(<network-id>|<network-name>)
+- publish=(<port>[/<proto>]|<startport-endport>/[<proto>])
+- since=(<container-name>|<container-id>)
+- status=(created|restarting|removing|running|paused|exited)
+- volume=(<volume name>|<mount point destination>)
 ```
 
 ## References
