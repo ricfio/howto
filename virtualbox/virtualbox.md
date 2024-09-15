@@ -43,12 +43,12 @@
 
    ```bash
    dd if=/dev/zero of=/home/zerofile bs=1M
-   rm -f /zerofile
+   rm -f /home/zerofile
    ```
 
    ```bash
    dd if=/dev/zero of=/var/lib/docker/zerofile bs=1M
-   rm -f /zerofile
+   rm -f /var/lib/docker/zerofile
    ```
 
 4. Shutdown the VM

@@ -7,7 +7,7 @@
 | command                                  | description                              |
 |------------------------------------------|------------------------------------------|
 | `docker image ls --all`                  | Show all images (includes intermediates) |
-| `docker image ls --all $PATTERN`         | Show images matching $PATTERN            |
+| `docker image ls --all $PATTERN`         | Show all images matching $PATTERN        |
 | `docker image ls --all -f dangling=true` | Show dangling images                     |
 | `docker image prune -f`                  | Prune dangling images                    |
 
@@ -15,7 +15,7 @@
 
 | command                                                    | description                              |
 |------------------------------------------------------------|------------------------------------------|
-| `docker container ls --all`                                | Show all containers matching $PATTERN    |
+| `docker container ls --all`                                | Show all containers                      |
 | `docker container ls --all -f name=$PATTERN`               | Show all containers matching $PATTERN    |
 | `docker container ls --all -f ancestor=$IMAGE`             | Show all containers built from '$IMAGE'  |
 | `docker cp [OPTIONS] $CONTAINER_NAME:$SRC_PATH $DEST_PATH` | Copy files from container to localsystem |
