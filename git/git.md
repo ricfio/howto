@@ -10,10 +10,9 @@ git clone git@github.com:ricfio/howto.git
 
 ```bash
 echo "# README" >> README.md
-git init
+git init --initial-branch=main
 git add --all
 git commit -m "Initial commit"
-git branch -m main
 ```
 
 ## Add remote origin on GitHub
@@ -44,29 +43,28 @@ git push -u origin main
 |----------------------------------------------------|----------------------------------------------------------------|
 | `git clone <repo> <folder> -b <branch>`            | Clone `<repo>` into `<folder>` with checkout on `<branch>`     |
 | `git fetch`                                        | Fetch from remote                                              |
-| `git branch --list`                                | List local branches                                            |
-| `git branch --list --remote`                       | List remote branches                                           |
+| `git --no-pager stash list`                        | List stashes                                                   |
+| `git --no-pager branch --list`                     | List local branches                                            |
+| `git --no-pager branch --list --remote`            | List remote branches                                           |
 | `git switch -c <branch> --track <remote>/<branch>` | Create and Switch to a new `<branch>` from `<remote>/<branch>` |
 | `git checkout <branch>`                            | Checkout `<branch>`                                            |
 | `git pull`                                         | Pull from remote                                               |
 | `git log --pretty=oneline -n 5 [<from>..<to>]`     | Show the last 5 commits (one row for each one)                 |
-| `git restore <files>`                              | Restore `<file>` or `<files>` (file1 .. fileN) from repository |
+| `git restore <files>`                              | Restore `<files>` (`<file-1>`...`<file-N>`) from repository    |
 | `git push [-f] origin main`                        | Push from local to remote origin main branch (-f force)        |
 | `git push origin --all`                            | Push from local to remote origin all branchs                   |
 | `git push origin --tags`                           | Push from local to remote origin all tags                      |
 
 ### GIT-Flow commands
 
-```bash
-git flow init -d
-```
-
 | command                                       | description                                                         |
 |-----------------------------------------------|---------------------------------------------------------------------|
 | `git flow init -d`                            | Initialize repository for GIT Flow (`apt-get install git-flow`)     |
 | `git flow feature start <feature> [<branch>]` | Start new `<feature>` from `<branch>`                               |
-| `git flow feature finish <feature>`           | Finish `<feature>`                                                  |
+| `git flow feature finish [-kSrFD] <feature>`  | Finish `<feature>` (-k keep branch; -S squash feature; -r rebase)   |
 | `git flow hotfix start <hotfix> [<branch>]`   | Start new hotfix `<hotfix>` from `<branch>`                         |
+| `git flow release start <release>`            | Start new release `<release>`                                       |
+| `git flow release finish [-kS] <release>`     | Finish `<release>` (-k keep branch; -S squash feature)              |
 
 ### Clean, Reset and Delete commands
 
