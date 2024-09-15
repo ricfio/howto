@@ -1,5 +1,19 @@
 # WSL
 
+## FIX vmmem High Memory and CPU Usage in Windows
+
+Setting boundaries for WSL2 (%USERPROFILE%/.wslconfig):
+
+```ps
+[wsl2]
+guiApplications=false
+memory=6GB # Limits VM memory in WSL 2 to 6 GB
+processors=2 # Makes the WSL 2 VM use two virtual processors
+```
+
+**NOTE**
+With `guiApplications=false` you won’t be able to use Linux GUI apps.
+
 ## Move all WSL Distributions on other drive
 
 Use 'Windows PowerShell' as shell for the following commands.
